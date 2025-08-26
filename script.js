@@ -29,7 +29,11 @@ let allowedWords = [];
   const rows = document.querySelectorAll('.grid');
 
   if(!hasPlayedToday()){
-    document.addEventListener('keydown',handleKeyPress);
+    document.querySelectorAll(".keyboard button").forEach(btn => {
+      btn.addEventListener("click", () => {
+      handleKeyPress({ key: btn.dataset.key });
+      });
+    });
   }
 
   function handleKeyPress(e){
